@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container" (backdropClick)="close()">
+  <mat-sidenav #sidenav mode="push">
+    <p class="close-sidenav">
+      <button class="exit-btn" (click)="close('toggle button')" *ngIf="sidenav.opened">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </p>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/timecard" routerLinkActive="active">Time Card</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/reports" routerLinkActive="active">Reports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/profile" routerLinkActive="active">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/info" routerLinkActive="active">Info</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <p>
+      <button mat-raised-button (click)="sidenav.open()" *ngIf="!sidenav.opened">
+        <mat-icon>reorder</mat-icon>
+      </button>
+    </p>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

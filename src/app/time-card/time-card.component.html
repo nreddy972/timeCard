@@ -1,0 +1,121 @@
+<div style="background-color: white;">
+    <div>
+        <h1 class="maintitle" style="color: black; margin-bottom: 40px;padding: 10px; text-align:center;">Monthly
+            Timesheet</h1>
+    </div>
+    <hr>
+
+    <div style="border: 2px solid black;">
+        <div class="container pl-1">
+
+
+            <table class="topnav table ">
+
+
+                <tr>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput [matDatepicker]="dp" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp></mat-datepicker>
+                    </mat-form-field>
+
+                </tr>
+
+                <tr>
+
+                    <th style="text-align:justify;">Project</th><br>
+                    <th>Task</th><br>
+                    <th>Mon <br>
+                        {{defaultDate | date:'shortDate' }}
+                    </th><br>
+
+                    <th>Tue<br>
+                        {{defaultDate | date:'shortDate' }}</th><br>
+                    <th>Wed<br>
+                    </th><br>
+                    <th>Thu<br>
+
+                    </th><br>
+                    <th>Fri<br>
+                    </th><br>
+                    <th>Sat<br>
+                    </th><br>
+                    <th>Sun<br>
+                    </th><br>
+                    <th>RawTotal</th>
+                </tr>
+                <tr>
+                    <td><select style="height:30px ;">
+                            <option cecked>Project 1</option>
+                            <option>Project 2</option>
+                            <option>Project 3</option>
+                        </select></td><br>
+                    <td><select style="height:30px ;">
+                            <option checked>Task 1</option>
+                            <option>Task 2</option>
+                            <option>Task 3</option>
+                        </select></td><br>
+                    <td><input type="text" [(ngModel)]="mon" (change)="calc()" size="1px"></td><br>
+                    <td><input type="text" [(ngModel)]="tue" (change)="calc()" size="1px"></td><br>
+                    <td><input type="text" size="1px"></td><br>
+                    <td><input type="text" size="1px"></td><br>
+                    <td><input type="text " size="1px"></td><br>
+                    <td><input type="text" size="1px"></td><br>
+                    <td><input type="text" size="1px"></td><br>
+                    <td><input type="text" [(ngModel)]="sum" size="1px"></td>
+                </tr>
+
+
+
+            </table>
+
+        </div>
+
+
+        <div class="container">
+            <form [formGroup]="numberForm" (ngSubmit)="onSubmit()">
+
+                <table class="table" formArrayName="numbers">
+
+                    <tr *ngFor="let num of numbers().controls; let i=index" [formGroupName]="i">
+
+                        <td><select style="height:30px ;">
+                                <option cecked>Project 1</option>
+                                <option>Project 2</option>
+                                <option>Project 3</option>
+                            </select></td><br>
+                        <td><select style="height:30px ;">
+                                <option checked>Task 1</option>
+                                <option>Task 2</option>
+                                <option>Task 3</option>
+                            </select></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text " size="1px"></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text" size="1px"></td><br>
+                        <td><input type="text" size="1px"></td>
+
+                        <td>
+                            <button (click)="removeNumber(i)" class="btn btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th><button type="button" (click)="addNumber()" class="btn btn-primary">Add</button></th>
+                    </tr>
+                </table>
+
+
+
+            </form>
+
+        </div>
+    </div>
+
+    <br>
+    <button style="margin: 0px 0px 0px 1200px;" type="submit" class="btn btn-success">Submit</button>
+</div>
